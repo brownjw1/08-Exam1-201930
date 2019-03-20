@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Jared Brown.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -80,10 +80,28 @@ def problem4(point1, point2, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, ignore the colors.
     # -------------------------------------------------------------------------
+
+    point1.attach_to(window)
+    point2.attach_to(window)
+    incrementX=(point2.x-point1.x)/(2*n+1)
+    incrementY=(point2.y-point1.y)/(2*n+1)
+    for k in range(2*n):
+        point = rg.Point(point1.x + (k+1)*incrementX, point1.y + (k+1)*incrementY)
+        if(k<=n-1):
+            point.fill_color=point2.fill_color
+        else:
+            point.fill_color=point1.fill_color
+        point1.attach_to(window)
+        point2.attach_to(window)
+        point.attach_to(window)
+        window.render()
+
+
+
 
 
 # -----------------------------------------------------------------------------
